@@ -10,7 +10,7 @@ Als gehostete Version: [https://asciidisco.github.io/awb2ics/](https://asciidisc
 ## Install
 
 ```
-npm i awb2ics -g
+npm i abfuhrkalender-awb-koeln -g
 ```
 
 ## CLI
@@ -30,7 +30,7 @@ npm i awb2ics -g
 ## Programmatically
 
 ```
-const awb2ics = require('awb2ics')
+const awb2ics = require('abfuhrkalender-awb-koeln')
 awb2ics(street_name, building_number, year, zipcode, (err, data) => {})
 ```
 
