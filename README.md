@@ -5,7 +5,7 @@ Abfuhrkalender ICS Generator für Köln AWB
 Da die Stadt Köln & die AWB Betriebe es seit Jahren nicht hinbekommen die Abfuhrtermine
 als [ICS anzubieten](https://www.offenedaten-koeln.de/anfragen/abfuhrtermine-im-ical-format), gibt es hier die inoffizielle Lösung.
 
-Als gehostete Version: GHP
+Als gehostete Version: [https://asciidisco.github.io/awb2ics/](https://asciidisco.github.io/awb2ics/)
 
 ## Install
 

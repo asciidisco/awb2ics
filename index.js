@@ -1,5 +1,5 @@
 const fs = require('fs')
-const http = require('http')
+const http = require('https')
 const uuid = require('node-uuid')
 const icalendar = require('icalendar')
 const ical = new icalendar.iCalendar()
@@ -57,7 +57,7 @@ const parseCollectionEventsResponseData = (rawData, cb) => {
 }
 
 const getStreetCode = (street_name, building_number, plz, cb) => {
-  let streetCodeApiEndpoint = `http://www.awbkoeln.de/api/streets?street_name=${street_name}&building_number=${building_number}&building_number_addition=&form=json`
+  let streetCodeApiEndpoint = `https://www.awbkoeln.de/api/streets?street_name=${street_name}&building_number=${building_number}&building_number_addition=&form=json`
   http.get(streetCodeApiEndpoint, (res) => {
     let error = checkForError(res.statusCode, res.headers['content-type'])
     if (error) {
@@ -73,7 +73,7 @@ const getStreetCode = (street_name, building_number, plz, cb) => {
 }
 
 const getCollectionEvents = (street_code, building_number, year, cb) => {
-  let collectionEventsApiEndpoint = `http://www.awbkoeln.de/api/calendar?building_number=${building_number}&street_code=${street_code}&start_year=${year}&end_year=${year}&start_month=1&end_month=12&form=json`
+  let collectionEventsApiEndpoint = `https://www.awbkoeln.de/api/calendar?building_number=${building_number}&street_code=${street_code}&start_year=${year}&end_year=${year}&start_month=1&end_month=12&form=json`
   http.get(collectionEventsApiEndpoint, (res) => {
     let error = checkForError(res.statusCode, res.headers['content-type'])
     if (error) {
