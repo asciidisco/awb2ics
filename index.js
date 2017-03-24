@@ -14,6 +14,8 @@ const tranformSubject = (subject) => {
       return "Blaue Tonne"
     case 'yellow':
       return "Gelbe Tonne"
+    case 'brown':
+      return "Braune Tonne"      
     case 'wertstoff':
       return "Wertstoff Tonne"
     default:
@@ -47,7 +49,7 @@ const parseCollectionEventsResponseData = (rawData, cb) => {
       parsedData.data.forEach((item) => {
         var event = new icalendar.VEvent(uuid.v4())
         event.setSummary(tranformSubject(item.type))
-        event.setDate(new Date(item.year,item.month,item.day,6,0,0), 60*60)
+        event.setDate(new Date(item.year,item.month-1,item.day,6,0,0), 60*60)
         ical.addComponent(event)
       })
       cb(null, ical.toString())
