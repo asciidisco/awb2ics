@@ -1,6 +1,6 @@
 {
   "name": "abfuhrkalender-awb-koeln",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Generiert ICS Kalender Dateien von der AWB Koeln",
   "main": "index.js",
   "repository": {
