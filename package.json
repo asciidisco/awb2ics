@@ -1,12 +1,12 @@
 {
   "name": "abfuhrkalender-awb-koeln",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Generiert ICS Kalender Dateien von der AWB Koeln",
   "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/asciidisco/awb2ics.git"
-  },  
+  },
   "scripts": {
     "browser": "browserify script.js -t [ babelify --presets [ es2015 ] ] | uglifyjs -c > bundle.js"
   },
@@ -16,14 +16,15 @@
     "awb2ics": "./bin/awb2ics"
   },
   "devDependencies": {
-    "babel-preset-es2015": "6.24.0",
-    "babelify": "7.3.0",
-    "browserify": "14.1.0",
-    "uglifyjs": "2.4.10"
+    "babel-preset-es2015": "6.24.1",
+    "babelify": "8.0.0",
+    "browserify": "14.5.0",
+    "uglifyjs": "2.4.11"
   },
   "dependencies": {
-    "commander": "2.9.0",
+    "babel-core": "6.26.0",
+    "commander": "2.12.2",
     "icalendar": "0.7.1",
-    "node-uuid": "1.4.7"
+    "node-uuid": "1.4.8"
   }
 }

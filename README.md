@@ -20,18 +20,19 @@ npm i abfuhrkalender-awb-koeln -g
 
   Options:
 
-    -h, --help                  output usage information
-    -s, --street <street_name>  Ihr Streaßenname
-    -p, --plz <zipcode>         Ihre Postleitzahl
-    -n, --bn <building_number>  Ihre Hausnummer
-    -y, --year <year>           Jahr der Abfuhrtermine
+    -h, --help                            output usage information
+    -s, --street <street_name>            Ihr Straßenname
+    -p, --plz <zipcode>                   Ihre Postleitzahl
+    -n, --bn <building_number>            Ihre Hausnummer
+    -z, --hz <building_number_addition>   Ihr Hausnummernzusatz  
+    -y, --year <year>                     Jahr der Abfuhrtermine
 ```
 
 ## Programmatically
 
 ```
 const awb2ics = require('abfuhrkalender-awb-koeln')
-awb2ics(street_name, building_number, year, zipcode, (err, data) => {})
+awb2ics(street_name, building_number, year, zipcode, building_number_addition, (err, data) => {})
 ```
 
 ## Website

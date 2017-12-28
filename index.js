@@ -58,8 +58,9 @@ const parseCollectionEventsResponseData = (rawData, cb) => {
   }
 }
 
-const getStreetCode = (street_name, building_number, plz, cb) => {
-  let streetCodeApiEndpoint = `https://www.awbkoeln.de/api/streets?street_name=${street_name}&building_number=${building_number}&building_number_addition=&form=json`
+const getStreetCode = (street_name, building_number, building_number_addition, plz, cb) => {
+  if (!building_number_addition) building_number_addition = ''
+  let streetCodeApiEndpoint = `https://www.awbkoeln.de/api/streets?street_name=${street_name}&building_number=${building_number}&building_number_addition=${building_number_addition}&form=json`
   http.get(streetCodeApiEndpoint, (res) => {
     let error = checkForError(res.statusCode, res.headers['content-type'])
     if (error) {
@@ -74,8 +75,9 @@ const getStreetCode = (street_name, building_number, plz, cb) => {
   })
 }
 
-const getCollectionEvents = (street_code, building_number, year, cb) => {
-  let collectionEventsApiEndpoint = `https://www.awbkoeln.de/api/calendar?building_number=${building_number}&street_code=${street_code}&start_year=${year}&end_year=${year}&start_month=1&end_month=12&form=json`
+const getCollectionEvents = (street_code, building_number, building_number_addition, year, cb) => {
+  if (!building_number_addition) building_number_addition = ''  
+  let collectionEventsApiEndpoint = `https://www.awbkoeln.de/api/calendar?building_number=${building_number}&street_code=${street_code}&start_year=${year}&end_year=${year}&start_month=1&end_month=12&building_number_addition=${building_number_addition}&form=json`
   http.get(collectionEventsApiEndpoint, (res) => {
     let error = checkForError(res.statusCode, res.headers['content-type'])
     if (error) {
@@ -90,10 +92,14 @@ const getCollectionEvents = (street_code, building_number, year, cb) => {
   })
 }
 
-module.exports = (street, building_number, year, plz, cb) => {
-  getStreetCode(street, building_number, plz, (err, data) => {
+module.exports = (street, building_number, year, plz, building_number_addition, cb) => {
+  if (!cb && typeof building_number_addition === 'function') {
+    cb = building_number_addition
+    building_number_addition = ''
+  }
+  getStreetCode(street, building_number, building_number_addition, plz, (err, data) => {
     if (err) return cb(err, null)
-    getCollectionEvents(data.street_code, data.building_number, year, (err, data) => {
+    getCollectionEvents(data.street_code, data.building_number, building_number_addition, year, (err, data) => {
       cb(err, data)
     })
   })
